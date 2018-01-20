@@ -1,0 +1,16 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-size: .32rem;
+	color: #333;
+}
+a {
+	text-decoration: none;
+	color: #333;
+}
+img {
+	width: 100%;
+	vertical-align: top;
+}

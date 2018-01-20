@@ -1,0 +1,42 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet type=text/css href=//at.alicdn.com/t/font_545651_ugk2ikveichxgvi.css><script>(function(win) {
+            var remCalc = {};
+            var docEl = win.document.documentElement,
+                tid;
+
+            function refreshRem() {
+                var width = docEl.getBoundingClientRect().width;
+                if (width > 640) { width = 640 }
+                var rem = width / 10;
+                docEl.style.fontSize = rem + "px";
+                remCalc.rem = rem;
+                var actualSize = parseFloat(window.getComputedStyle(document.documentElement)["font-size"]);
+                if (actualSize !== rem && actualSize > 0 && Math.abs(actualSize - rem) > 1) {
+                    var remScaled = rem * rem / actualSize;
+                    docEl.style.fontSize = remScaled + "px"
+                }
+            }
+
+            function dbcRefresh() {
+                clearTimeout(tid);
+                tid = setTimeout(refreshRem, 100)
+            }
+
+            win.addEventListener("resize", function() { dbcRefresh() }, false);
+
+            win.addEventListener("pageshow", function(e) {
+                if (e.persisted) { dbcRefresh() }
+            }, false);
+            refreshRem();
+            remCalc.refreshRem = refreshRem;
+            remCalc.rem2px = function(d) {
+                var val = parseFloat(d) * this.rem;
+                if (typeof d === "string" && d.match(/rem$/)) { val += "px" }
+                return val
+            };
+            remCalc.px2rem = function(d) {
+                var val = parseFloat(d) / this.rem;
+                if (typeof d === "string" && d.match(/px$/)) { val += "rem" }
+                return val
+            };
+            win.remCalc = remCalc
+        })(window);</script><title>zuiyou</title><link href=/zuiyou/static/css/app.19bc06e1bbbaa4282710aa651c098720.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/zuiyou/static/js/manifest.67fa75650ebb4916cb6b.js></script><script type=text/javascript src=/zuiyou/static/js/vendor.03b4ca837b43101f38aa.js></script><script type=text/javascript src=/zuiyou/static/js/app.b3136a67c7bd7507820d.js></script></body></html>
